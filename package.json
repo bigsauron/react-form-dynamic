@@ -1,0 +1,51 @@
+{
+  "name": "react-form-dynamic",
+  "version": "1.0.0",
+  "description": "React Form Generator",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigsauron/react-form-dynamic.git"
+  },
+  "author": "Vardan Bagiryan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bigsauron/react-form-dynamic/issues"
+  },
+  "homepage": "https://github.com/bigsauron/react-form-dynamic#readme",
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "dependencies": {
+    "formik": "^2.1.4",
+    "react": "^16.13.1",
+    "webpack": "^4.43.0",
+    "yup": "^0.28.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^7.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "path": "^0.12.7",
+    "webpack-cli": "^3.3.11"
+  }
+}
