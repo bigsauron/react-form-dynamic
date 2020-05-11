@@ -1,4 +1,7 @@
 const path = require('path');
+const pkg = require('./package.json');
+const libraryName = pkg.name;
+
 module.exports = {
   entry: {
     main: './src/index.jsx'
@@ -7,7 +10,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'index.js',
-    libraryTarget: 'commonjs2'
+    library: libraryName,
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
@@ -30,7 +35,18 @@ module.exports = {
     ]
   },
   externals: {
-    'react': 'commonjs react',
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'React',
+      root: 'React'
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'ReactDOM',
+      root: 'ReactDOM'
+    }
   },
   resolve: {
     extensions: ['*', '.js', '.jsx']
