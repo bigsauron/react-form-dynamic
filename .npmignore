@@ -5,3 +5,4 @@ src
 webpack.config.js
 yarn.lock
 package-lock.json
+setup-tests.js
