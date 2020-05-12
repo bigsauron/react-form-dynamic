@@ -3,6 +3,7 @@ import Input from './input';
 import Select from './select';
 import useForm from './use-form';
 import useGeneratedForm from './use-generated-form';
+import classnames from './classnames';
 
 export {
   ErrorMessage,
@@ -10,4 +11,5 @@ export {
   Select,
   useForm,
   useGeneratedForm,
+  classnames,
 };

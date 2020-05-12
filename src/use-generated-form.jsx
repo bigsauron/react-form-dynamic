@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Input, Select, useForm } from './';
 
-const UseGeneratedForm = (fields, onSubmit) => {
-  const formik = useForm({ fields, onSubmit });
+const UseGeneratedForm = (fields, onSubmit, options = {}) => {
+  const formik = useForm({ fields, onSubmit, ...options });
 
   const children = fields.map((f) => {
     const {

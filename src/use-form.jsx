@@ -4,6 +4,8 @@ import * as yup from 'yup';
 const useForm = ({
   onSubmit = () => { },
   fields = [],
+  validateOnMount = true,
+  ...rest
 }) => {
   const initialValues = {};
   const validation = {};
@@ -51,6 +53,8 @@ const useForm = ({
     initialValues,
     onSubmit,
     validationSchema,
+    validateOnMount,
+    ...rest
   });
   return formik;
 };
