@@ -1,4 +1,6 @@
 src
+coverage
+__tests__
 .babelrc
 .eslintrc.js
 .gitignore
