@@ -5,6 +5,11 @@ import { Input, Select, useForm } from './';
 const UseGeneratedForm = (fields, onSubmit, options = {}) => {
   const formik = useForm({ fields, onSubmit, ...options });
 
+  const {
+    classes: gClasses = {},
+    styles: gStyles = {},
+  } = options;
+
   const children = fields.map((f) => {
     const {
       type,
@@ -12,7 +17,10 @@ const UseGeneratedForm = (fields, onSubmit, options = {}) => {
       label,
       options,
       element,
+      classes = {},
+      styles = {},
       initialValue, // eslint-disable-line no-unused-vars
+      validations, // eslint-disable-line no-unused-vars
       ...rest
     } = f;
     const props = {
@@ -25,6 +33,8 @@ const UseGeneratedForm = (fields, onSubmit, options = {}) => {
     if (type === 'select') {
       return (
         <Select
+          classes={{ ...gClasses.select, ...classes }}
+          styles={{ ...gStyles.select, ...styles }}
           key={name}
           options={options}
           {...props}
@@ -41,6 +51,8 @@ const UseGeneratedForm = (fields, onSubmit, options = {}) => {
 
     return (
       <Input
+        classes={{ ...gClasses.input, ...classes }}
+        styles={{ ...gStyles.input, ...styles }}
         key={name}
         {...props}
       />
