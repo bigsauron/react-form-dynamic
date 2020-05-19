@@ -1,6 +1,6 @@
 {
   "name": "react-form-dynamic",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React Form Generator",
   "main": "build/index.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-text-mask": "^5.4.3",
     "yup": "^0.28.5"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-text-mask": "^5.4.3",
     "yup": "^0.28.5"
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import MaskedInput from 'react-text-mask';
+
 import ErrorMessage from './error-message';
 
 import classnames from './classnames';
@@ -13,6 +15,7 @@ const Input = ({
   showError,
   classes,
   styles,
+  mask,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -29,6 +32,8 @@ const Input = ({
     }
   };
 
+  const InputComponent = mask ? MaskedInput : 'input';
+
   return (
     <>
       <div
@@ -40,10 +45,11 @@ const Input = ({
         }}
         className={classes.container}
       >
-        <input
+        <InputComponent
           style={{
             ...styles.input,
           }}
+          mask={mask}
           name={name}
           {...formik.getFieldProps(name)}
           onChange={handleChange}
@@ -70,6 +76,7 @@ const Input = ({
 Input.propTypes = {
   formik: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
+  mask: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(RegExp)])),
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
   inline: PropTypes.bool.isRequired,
@@ -84,6 +91,7 @@ Input.defaultProps = {
   inline: false,
   styles: {},
   classes: {},
+  mask: null,
 };
 Input.displayName = 'Input';
 export default Input;

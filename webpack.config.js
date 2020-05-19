@@ -35,6 +35,7 @@ module.exports = {
     'react-dom': 'commonjs react-dom',
     'prop-types': 'commonjs prop-types',
     'formik': 'commonjs formik',
+    'react-text-mask': 'commonjs react-text-mask',
     'yup': 'commonjs yup',
   },
   resolve: {
