@@ -17,7 +17,6 @@ const Select = ({
   styles,
   ...other
 }) => {
-
   const handleChange = (event) => {
     formik.handleChange(event);
     if (onChange) {
@@ -32,8 +31,10 @@ const Select = ({
     }
   };
 
+  const opts = [...options];
+
   if (placeholder) {
-    options.unshift({
+    opts.unshift({
       label: placeholder,
       value: '',
     });
@@ -65,7 +66,7 @@ const Select = ({
           {...other}
         >
           {
-            options.map((o, i) => (
+            opts.map((o, i) => (
               <option
                 key={i}
                 value={o.value}
