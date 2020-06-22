@@ -15,6 +15,8 @@ const Select = ({
   showError,
   classes,
   styles,
+  prepend,
+  append,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -51,6 +53,9 @@ const Select = ({
         }}
         className={classes.container}
       >
+        {
+          !!prepend && prepend
+        }
         <select
           style={{
             ...styles.select,
@@ -80,6 +85,9 @@ const Select = ({
             ))
           }
         </select>
+        {
+          !!append && append
+        }
         {showError &&
           <ErrorMessage
             formik={formik}
@@ -111,6 +119,8 @@ Select.propTypes = {
     ]).isRequired,
     label: PropTypes.string.isRequired,
   })),
+  prepend: PropTypes.node,
+  append: PropTypes.node,
 };
 Select.defaultProps = {
   onChange: () => { },
@@ -121,6 +131,8 @@ Select.defaultProps = {
   inline: false,
   styles: {},
   classes: {},
+  prepend: null,
+  append: null,
 };
 Select.displayName = 'Select';
 export default Select;

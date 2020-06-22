@@ -16,6 +16,8 @@ const Input = ({
   classes,
   styles,
   mask,
+  prepend,
+  append,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -45,6 +47,9 @@ const Input = ({
         }}
         className={classes.container}
       >
+        {
+          !!prepend && prepend
+        }
         <InputComponent
           style={{
             ...styles.input,
@@ -60,6 +65,9 @@ const Input = ({
           ])}
           {...other}
         />
+        {
+          !!append && append
+        }
         {showError &&
           <ErrorMessage
             formik={formik}
@@ -83,6 +91,8 @@ Input.propTypes = {
   showError: PropTypes.bool.isRequired,
   classes: PropTypes.object,
   styles: PropTypes.object,
+  prepend: PropTypes.node,
+  append: PropTypes.node,
 };
 Input.defaultProps = {
   onChange: () => { },
@@ -92,6 +102,8 @@ Input.defaultProps = {
   styles: {},
   classes: {},
   mask: null,
+  prepend: null,
+  append: null,
 };
 Input.displayName = 'Input';
 export default Input;
