@@ -88,16 +88,15 @@ const Select = ({
         {
           !!append && append
         }
-        {showError &&
-          <ErrorMessage
-            formik={formik}
-            name={name}
-            className={classes.error}
-            style={styles.error}
-          />
-        }
       </div>
-
+      {showError &&
+        <ErrorMessage
+          formik={formik}
+          name={name}
+          className={classes.error}
+          style={styles.error}
+        />
+      }
     </>
   );
 };
