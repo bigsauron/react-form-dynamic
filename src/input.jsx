@@ -36,6 +36,8 @@ const Input = ({
 
   const InputComponent = mask ? MaskedInput : 'input';
 
+  const isError = !!formik.touched[name] && !!formik.errors[name];
+
   return (
     <>
       <div
@@ -45,7 +47,10 @@ const Input = ({
           }),
           ...styles.container,
         }}
-        className={classes.container}
+        className={classnames([
+          classes.container,
+          isError && (classes.containerError || 'error')
+        ])}
       >
         {
           !!prepend && prepend
@@ -61,22 +66,22 @@ const Input = ({
           onBlur={handleBlur}
           className={classnames([
             classes.input,
-            (!!formik.touched[name] && !!formik.errors[name] && 'error')
+            isError && (classes.inputError || 'error')
           ])}
           {...other}
         />
         {
           !!append && append
         }
+        {showError &&
+          <ErrorMessage
+            formik={formik}
+            name={name}
+            className={classes.error}
+            style={styles.error}
+          />
+        }
       </div>
-      {showError &&
-        <ErrorMessage
-          formik={formik}
-          name={name}
-          className={classes.error}
-          style={styles.error}
-        />
-      }
     </>
   );
 };

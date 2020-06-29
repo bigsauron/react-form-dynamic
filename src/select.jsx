@@ -42,6 +42,8 @@ const Select = ({
     });
   }
 
+  const isError = !!formik.touched[name] && !!formik.errors[name];
+
   return (
     <>
       <div
@@ -51,7 +53,10 @@ const Select = ({
           }),
           ...styles.container,
         }}
-        className={classes.container}
+        className={classnames([
+          classes.container,
+          isError && (classes.containerError || 'error')
+        ])}
       >
         {
           !!prepend && prepend
@@ -66,7 +71,7 @@ const Select = ({
           onBlur={handleBlur}
           className={classnames([
             classes.select,
-            (!!formik.touched[name] && !!formik.errors[name] && 'error')
+            isError && (classes.inputError || 'error')
           ])}
           {...other}
         >
@@ -88,15 +93,15 @@ const Select = ({
         {
           !!append && append
         }
+        {showError &&
+          <ErrorMessage
+            formik={formik}
+            name={name}
+            className={classes.error}
+            style={styles.error}
+          />
+        }
       </div>
-      {showError &&
-        <ErrorMessage
-          formik={formik}
-          name={name}
-          className={classes.error}
-          style={styles.error}
-        />
-      }
     </>
   );
 };
