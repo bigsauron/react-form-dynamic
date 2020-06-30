@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Input from '../src/input';
+import { Input } from '../src/input';
 
 describe('Input', () => {
   let props;

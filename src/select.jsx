@@ -4,7 +4,8 @@ import ErrorMessage from './error-message';
 
 import classnames from './classnames';
 
-const Select = ({
+export const Select = ({
+  inputRef,
   formik,
   name,
   onChange,
@@ -73,6 +74,7 @@ const Select = ({
             classes.select,
             isError && (classes.inputError || 'error')
           ])}
+          ref={inputRef}
           {...other}
         >
           {
@@ -125,6 +127,10 @@ Select.propTypes = {
   })),
   prepend: PropTypes.node,
   append: PropTypes.node,
+  inputRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
 };
 Select.defaultProps = {
   onChange: () => { },
@@ -137,6 +143,11 @@ Select.defaultProps = {
   classes: {},
   prepend: null,
   append: null,
+  inputRef: null,
 };
 Select.displayName = 'Select';
-export default Select;
+
+export default React.forwardRef((props, ref) => (
+  <Select inputRef={ref} {...props} />
+));
+

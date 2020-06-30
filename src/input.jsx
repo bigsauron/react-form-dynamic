@@ -6,7 +6,8 @@ import ErrorMessage from './error-message';
 
 import classnames from './classnames';
 
-const Input = ({
+export const Input = ({
+  inputRef,
   formik,
   name,
   onChange,
@@ -59,6 +60,7 @@ const Input = ({
           style={{
             ...styles.input,
           }}
+          ref={inputRef}
           mask={mask}
           name={name}
           {...formik.getFieldProps(name)}
@@ -98,6 +100,10 @@ Input.propTypes = {
   styles: PropTypes.object,
   prepend: PropTypes.node,
   append: PropTypes.node,
+  inputRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ]),
 };
 Input.defaultProps = {
   onChange: () => { },
@@ -109,6 +115,10 @@ Input.defaultProps = {
   mask: null,
   prepend: null,
   append: null,
+  inputRef: null,
 };
 Input.displayName = 'Input';
-export default Input;
+
+export default React.forwardRef((props, ref) => (
+  <Input inputRef={ref} {...props} />
+));
