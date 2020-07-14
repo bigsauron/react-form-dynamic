@@ -35,7 +35,7 @@ export const Input = ({
     }
   };
 
-  const InputComponent = mask ? MaskedInput : 'input';
+  const InputComponent = mask !== null ? MaskedInput : 'input';
 
   const isError = !!formik.touched[name] && !!formik.errors[name];
 
@@ -91,7 +91,15 @@ export const Input = ({
 Input.propTypes = {
   formik: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  mask: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(RegExp)])),
+  mask: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(RegExp)
+      ])
+    ),
+    PropTypes.bool,
+  ]),
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
   inline: PropTypes.bool.isRequired,

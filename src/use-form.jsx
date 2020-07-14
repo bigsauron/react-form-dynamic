@@ -21,6 +21,9 @@ const useForm = ({
     initialValues[name] = initialValue;
     if (validations.length) {
       validation[name] = yup[validationType]();
+      if (validation[name].trim) {
+        validation[name] = validation[name].trim();
+      }
       if (label) {
         validation[name] = validation[name].label(label);
       }
