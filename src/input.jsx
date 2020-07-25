@@ -19,6 +19,7 @@ export const Input = ({
   mask,
   prepend,
   append,
+  label,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -56,6 +57,7 @@ export const Input = ({
         {
           !!prepend && prepend
         }
+        {!!label && <label className={classes.label}>{label}</label>}
         <InputComponent
           style={{
             ...styles.input,
@@ -108,6 +110,7 @@ Input.propTypes = {
   styles: PropTypes.object,
   prepend: PropTypes.node,
   append: PropTypes.node,
+  label: PropTypes.string,
   inputRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.any })
@@ -124,6 +127,7 @@ Input.defaultProps = {
   prepend: null,
   append: null,
   inputRef: null,
+  label: null,
 };
 Input.displayName = 'Input';
 

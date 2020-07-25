@@ -18,6 +18,7 @@ export const Select = ({
   styles,
   prepend,
   append,
+  label,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -62,6 +63,7 @@ export const Select = ({
         {
           !!prepend && prepend
         }
+        {!!label && <label className={classes.label}>{label}</label>}
         <select
           style={{
             ...styles.select,
@@ -127,6 +129,7 @@ Select.propTypes = {
   })),
   prepend: PropTypes.node,
   append: PropTypes.node,
+  label: PropTypes.string,
   inputRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.any })
@@ -143,6 +146,7 @@ Select.defaultProps = {
   classes: {},
   prepend: null,
   append: null,
+  label: null,
   inputRef: null,
 };
 Select.displayName = 'Select';
