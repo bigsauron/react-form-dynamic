@@ -19,6 +19,7 @@ export const Select = ({
   prepend,
   append,
   label,
+  invalid,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -44,7 +45,7 @@ export const Select = ({
     });
   }
 
-  const isError = !!formik.touched[name] && !!formik.errors[name];
+  const isError = invalid || (!!formik.touched[name] && !!formik.errors[name]);
 
   return (
     <>
@@ -116,6 +117,7 @@ Select.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  invalid: PropTypes.bool,
   inline: PropTypes.bool.isRequired,
   showError: PropTypes.bool.isRequired,
   classes: PropTypes.object,
@@ -148,6 +150,7 @@ Select.defaultProps = {
   append: null,
   label: null,
   inputRef: null,
+  invalid: false,
 };
 Select.displayName = 'Select';
 

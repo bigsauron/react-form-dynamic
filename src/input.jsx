@@ -20,6 +20,7 @@ export const Input = ({
   prepend,
   append,
   label,
+  invalid,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -38,7 +39,7 @@ export const Input = ({
 
   const InputComponent = mask !== null ? MaskedInput : 'input';
 
-  const isError = !!formik.touched[name] && !!formik.errors[name];
+  const isError = invalid || (!!formik.touched[name] && !!formik.errors[name]);
 
   return (
     <>
@@ -104,8 +105,9 @@ Input.propTypes = {
   ]),
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
-  inline: PropTypes.bool.isRequired,
-  showError: PropTypes.bool.isRequired,
+  invalid: PropTypes.bool,
+  inline: PropTypes.bool,
+  showError: PropTypes.bool,
   classes: PropTypes.object,
   styles: PropTypes.object,
   prepend: PropTypes.node,
@@ -128,6 +130,7 @@ Input.defaultProps = {
   append: null,
   inputRef: null,
   label: null,
+  invalid: false,
 };
 Input.displayName = 'Input';
 
