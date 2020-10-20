@@ -21,6 +21,7 @@ export const Input = ({
   append,
   label,
   invalid,
+  rows,
   ...other
 }) => {
   const handleChange = (event) => {
@@ -37,7 +38,7 @@ export const Input = ({
     }
   };
 
-  const InputComponent = mask !== null ? MaskedInput : 'input';
+  const InputComponent = rows ? 'textarea' : mask !== null ? MaskedInput : 'input';
 
   const isError = invalid || (!!formik.touched[name] && !!formik.errors[name]);
 
@@ -66,6 +67,7 @@ export const Input = ({
           ref={inputRef}
           mask={mask}
           name={name}
+          rows={rows}
           {...formik.getFieldProps(name)}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -113,6 +115,7 @@ Input.propTypes = {
   prepend: PropTypes.node,
   append: PropTypes.node,
   label: PropTypes.string,
+  rows: PropTypes.string,
   inputRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.any })
@@ -131,6 +134,7 @@ Input.defaultProps = {
   inputRef: null,
   label: null,
   invalid: false,
+  rows: null,
 };
 Input.displayName = 'Input';
 
